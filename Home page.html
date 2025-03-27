@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="1";>
-    <title>Recipe</title>
+    <link rel="icon" type="image/jpg" href="Logo.png">
+    <title>Financial Literacy</title>
     <style>
         body {
-            background: linear-gradient(to top, rgb(230, 227, 223), rgb(8, 19, 137));
+            background: url("background\ img.png");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100% 100%;
@@ -16,34 +17,193 @@
             margin: 0;
         }
         .heading {
+            margin-top: 1px;
+            height: 23%;
             display: flex;
-            text-align: center;
-            border: 1px solid rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
             padding: 1px;
             border-radius: 5px;
-            background: linear-gradient(to right, rgb(175, 110, 25), rgb(189, 162, 132));
+            background-color: black;
             color: rgb(255, 255, 255);
             font-size: 30px;
         }
             .heading img {
-            margin-top: 39px;
+            margin-left: 1%;
+            margin-top: 26px;
             height: 125px;
             width: 125px;
-            border-radius: 5px;
+            border-radius: 100px;
         }
         .heading h1 {
+            padding: 10px;
             font-size: 4rem;
             font-weight: bold;
             color: #ffffff;
-            margin-left: 29%;
+            margin-left: 2%;
             padding: 0px 10px 0px 0px;  
               }  
+              .main {
+                margin-left: 15%;
+              }
+            .cards {
+            position: relative;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            width: 29%;
+            border-radius: 15px;
+            margin-top: 3%;
+            margin-left: 6%;
+            box-shadow: 2px 2px 10px black;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .cards:hover {
+            transform: scale(1.1);
+            box-shadow: 4px 8px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Glass blur effect */
+        .cards::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(17px);
+            -webkit-backdrop-filter: blur(17px);
+            z-index: -1;
+        }
+
+        /* Image styling */
+        .cards img {
+            width: 50px;
+            height: 250px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        /* Card content */
+        .content {
+            padding: 10px;
+            z-index: 1;
+        }
+        .image img {
+		         width: 377px;
+				border-radius:5px;
+                 }
+        .title  {
+		    text-align: center
+			font-family: Arial;
+			margin: 20px;
+			padding: 5px;
+                  }	
+        .des  {
+		    text-align: center;
+			padding: 0px;
+			font-family: Arial;
+                 }	
+         .button-link {
+            font-weight: bold;
+            font-size: x-large;
+            margin-bottom: 15px;
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+            background-color: white;
+            border: 2px solid black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden; 
+            transition: all 0.3s ease;
+            z-index: 1; 
+        }
+        .button-link:hover {
+            background-color: rgb(10, 8, 2);
+            color: rgb(255, 255, 255);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(255, 69, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 20px rgba(255, 165, 0, 0.9), 0 0 40px rgba(255, 69, 0, 0.8);
+            }
+        }
+
+        .button-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 85, 0, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1; 
+        }
+
+        .button-link:hover::before {
+            opacity: 1; 
+            animation: fireTrail 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes fireTrail {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-5px);
+            }
+        }
+
+        
     </style>
 </head>
 <body>
     <div class="heading">
     <h1>Fin-N-See</h1>
-    <img src="2 logo.png" alt="logo">
+    <img src="Logo.png" alt="logo">
 </div>
+<div class="main">	
+    <div class="cards">	
+     <div class="image">
+           <img src="begine button.png" width="300px" height="210px">	  
+      </div>	
+       <div class="title">	
+       <h1>BEGIN THE CLASS</h1>
+        </div>	
+         <div class="des">	 
+         <p>Learn</p>
+         <a href="kitt 2.html" class="button-link">Click here</a>
+          </div>	
+           </div>	
+           
+           
+       <!-- cards -->	
+       
+       <div class="cards">	
+     <div class="image">
+           <img src="Quirey button.png" width="300px" height="210px">	  
+      </div>	
+       <div class="title">	
+       <h1>ANY QUIREY</h1>
+        </div>	
+         <div class="des">	 
+         <p>Quirey</p>
+         <a href="posadi gumpe.html" class="button-link">Click here</a>
+          </div>	
+           </div>	
 </body>
 </html>
