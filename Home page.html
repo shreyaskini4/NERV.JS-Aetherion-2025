@@ -167,24 +167,36 @@
                 transform: translateY(-5px);
             }
         }
+       
         .footer {
-			margin-left: 0px;
-			background-color: rgb(2, 2, 39);
-			color: azure;
-		}		
-	    footer {
-                background-color: #02121e; 
-                color: orange;
-                padding: 20px 10px;
-                text-align: center;
-                font-family: Arial, sans-serif;
-                display: flex;
-                justify-content: center;
-        }
+  background: #2c3e50;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
 
-        footer div {
-            width: 100%; 
-        }
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px 0;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  border-top: 1px solid #34495e;
+  padding-top: 10px;
+  text-align: center;
+}
+       
         
     </style>
 </head>
@@ -215,12 +227,47 @@
            <img src="Quirey button.png" width="300px" height="210px">	  
       </div>	
        <div class="title">	
-       <h1>ANY QUIREY</h1>
+       <h1>ANY QUERY</h1>
         </div>	
          <div class="des">	 
          <p>Quirey</p>
          <a href="posadi gumpe.html" class="button-link">Click here</a>
           </div>	
-           </div>	      
+           </div>	  
+</div>
+           <footer class="footer">
+            <div class="footer-container">
+              <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Sharing the best recipes to make cooking easy and fun. Explore a variety of dishes and cooking tips.</p>
+              </div>
+          
+              <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Recipes</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+          
+              <div class="footer-section">
+                <h3>Team Members</h3>
+                <p>Frontend Developer: <a href="suhaspai13@gmail.com">suhaspai13@gmail.com</a></p>
+                <p>Backend Developer: <a href="mailto:backend@example.com">backend@example.com</a></p>
+                <p>UI/UX Designer: <a href="mailto:designer@example.com">designer@example.com</a></p>
+              </div>
+          
+              <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a>
+              </div>
+            </div>
+          
+            <div class="footer-bottom">
+              <p>&copy; 2025 Your Recipe Book. All rights reserved.</p>
+            </div>
+          </footer>       
 </body>
 </html>
