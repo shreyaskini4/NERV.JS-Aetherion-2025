@@ -1,130 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="1";>
-    <link rel="icon" type="image/jpg" href="Logo.png">
-    <title>Financial Literacy</title>
+    <title>MCQ Quiz</title>
     <style>
         body {
-            background: url("background\ img.png");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-            height: 100vh;
-            margin: 0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f9f9f9;
         }
-        .heading {
-            margin-top: 1px;
-            height: 23%;
-            display: flex;
-            border: 2px solid rgb(255, 255, 255);
-            padding: 1px;
-            border-radius: 5px;
-            background-color: black;
-            color: rgb(255, 255, 255);
-            font-size: 30px;
+        .container {
+            max-width: 800px;
+            margin: auto;
         }
-            .heading img {
-            margin-left: 1%;
-            margin-top: 26px;
-            height: 125px;
-            width: 125px;
-            border-radius: 100px;
-        }
-        .heading h1 {
+        .question {
+            margin-bottom: 15px;
             padding: 10px;
-            font-size: 4rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+        }
+        .result {
+            margin-top: 20px;
             font-weight: bold;
-            color: #ffffff;
-            margin-left: 2%;
-            padding: 0px 10px 0px 0px;  
-              }  
-              .main {
-                margin-left: 15%;
-              }
-              .footer {
-        background: #2c3e50;
-        color: white;
-        padding: 40px 20px;
-        text-align: center;
-          }
-
-        .footer-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
-        box-sizing: border-box;
-         }
-        .footer-section {
-        flex: 1;
-        min-width: 250px;
-        margin: 10px 0;
         }
-
-        .footer-bottom {
-        margin-top: 20px;
-        border-top: 1px solid #34495e;
-        padding-top: 10px;
-        text-align: center;
+        .buttons {
+            margin-top: 10px;
         }
-       .box {
-        margin-left: 75%;
-        color: white;
-        border: 2px solid rgb(255, 255, 255);
-        max-width: 25%;
-        height: 55%;
-        background-color: chocolate;
-       }
-        
+        .buttons button {
+            margin-right: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons .retest {
+            background-color: #ff9800;
+            color: white;
+        }
+        .buttons .next {
+            background-color: #4caf50;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <div class="heading">
-    <h1>Fin-N-See</h1>
-    <img src="Logo.png" alt="logo">
-</div>
-     <div class="box">
-        <h1>Chat Box</h1>
-     </div>
+    <div class="container">
+        <h2>MCQ Quiz</h2>
+        <form id="quizForm">
+            <div id="questions"></div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result" class="result"></div>
+        <div class="buttons" id="buttons" style="display: none;">
+            <button class="retest" onclick="location.reload()">Re-test</button>
+            <button class="next" onclick="window.location.href='next.html'">Next</button>
+        </div>
+    </div>
 
-           <footer class="footer">
-            <div class="footer-container">
-              <div class="footer-section">
-                <h3>About Us</h3>
-                <p>We aim to make financial literacy simple and accessible for everyone. Learn to manage money wisely and make informed financial decisions.</p>
-              </div>
-          
-              <div class="footer-section">
-                <h3>Quick home</h3>
-                <ul>
-                  <li>Home</a></li>
-                  <li>Layer</a></li>
-                  <li>About</a></li>
-                  <li>Contact</a></li>
-                </ul>
-              </div>
-          
-              <div class="footer-section">
-                <h3>Team Members</h3>
-                <p>Frontend Developer: <a href="suhaspai13@gmail.com">suhaspai13@gmail.com</a></p>
-                <p>Backend Developer: <a href="shreyas.jkini@gmail.com">backend@example.com</a></p>
-                <p>UI/UX Designer: <a href="theadithyaswayam@gmail.com">designer@example.com</a></p>
-              </div>
-          
-              <div class="footer-section">
-                <h3>Follow Us</h3>
-                <a href="#">Instagram</a>
-              </div>
-            </div>
-          
-            <div class="footer-bottom">
-              <p>&copy; 2025 Your Financial Literacy. All rights reserved.</p>
-            </div>
-          </footer>       
+    <script>
+        const questions = [
+            {
+                question: "What is the main purpose of a budget?",
+                options: [
+                    "A) To track only expenses",
+                    "B) To manage income and expenses effectively",
+                    "C) To increase credit score",
+                    "D) To eliminate all debt"
+                ],
+                answer: "B) To manage income and expenses effectively"
+            },
+            {
+                question: "Which of the following is NOT a key part of a simple monthly budget?",
+                options: [
+                    "A) Tracking income",
+                    "B) Tracking expenses",
+                    "C) Ignoring savings",
+                    "D) Using free budgeting tools"
+                ],
+                answer: "C) Ignoring savings"
+            },
+            {
+                question: "Which tool can help you manage your budget?",
+                options: [
+                    "A) A credit card",
+                    "B) A free budgeting app",
+                    "C) A loan application",
+                    "D) A stock market account"
+                ],
+                answer: "B) A free budgeting app"
+            },
+            {
+                question: "What is the recommended amount to have in an emergency fund?",
+                options: [
+                    "A) 1-2 months' worth of expenses",
+                    "B) 3-6 months' worth of expenses",
+                    "C) 6-12 months' worth of expenses",
+                    "D) No fixed amount"
+                ],
+                answer: "B) 3-6 months' worth of expenses"
+            },
+            {
+                question: "Which of these is a key advantage of an online savings account?",
+                options: [
+                    "A) Higher interest rates",
+                    "B) Lower ATM withdrawal fees",
+                    "C) Immediate access to cash",
+                    "D) No need to track transactions"
+                ],
+                answer: "A) Higher interest rates"
+            },
+            {
+                question: "The \"Pay Yourself First\" strategy means:",
+                options: [
+                    "A) Paying off debts before saving",
+                    "B) Setting aside savings before spending on expenses",
+                    "C) Using all income for investments",
+                    "D) Paying bills first and saving later"
+                ],
+                answer: "B) Setting aside savings before spending on expenses"
+            },
+            {
+                question: "What do you need to open a savings account?",
+                options: [
+                    "A) A credit card",
+                    "B) A valid ID and an initial deposit",
+                    "C) A loan approval letter",
+                    "D) A prepaid debit card"
+                ],
+                answer: "B) A valid ID and an initial deposit"
+            },
+            {
+                question: "How does a debit card differ from a prepaid card?",
+                options: [
+                    "A) Debit cards require a credit check",
+                    "B) Prepaid cards are linked to checking accounts",
+                    "C) Debit cards withdraw directly from a bank account",
+                    "D) Prepaid cards do not have spending limits"
+                ],
+                answer: "C) Debit cards withdraw directly from a bank account"
+            },
+            {
+                question: "Which of the following can help you avoid ATM fees?",
+                options: [
+                    "A) Using your bank's ATMs",
+                    "B) Withdrawing cash from any ATM",
+                    "C) Using a credit card for cash withdrawals",
+                    "D) Paying with a check instead"
+                ],
+                answer: "A) Using your bank's ATMs"
+            },
+            {
+                question: "What is an overdraft fee?",
+                options: [
+                    "A) A fee for exceeding your account balance",
+                    "B) A fee for opening a bank account",
+                    "C) A penalty for late loan payments",
+                    "D) A tax on interest earned from savings"
+                ],
+                answer: "A) A fee for exceeding your account balance"
+            },
+            {
+                question: "Credit is best described as:",
+                options: [
+                    "A) A system allowing you to borrow money and pay it back later",
+                    "B) A way to deposit money in a bank",
+                    "C) The same as a debit card",
+                    "D) A type of savings account"
+                ],
+                answer: "A) A system allowing you to borrow money and pay it back later"
+            },
+            {
+                question: "What is the key difference between a credit card and a debit card?",
+                options: [
+                    "A) Credit cards use borrowed money, debit cards use your own money",
+                    "B) Debit cards have interest rates",
+                    "C) Credit cards require a PIN for every transaction",
+                    "D) Debit cards are only for online purchases"
+                ],
+                answer: "A) Credit cards use borrowed money, debit cards use your own money"
+            },
+            {
+                question: "What is the best way to avoid credit card debt?",
+                options: [
+                    "A) Paying the minimum balance each month",
+                    "B) Paying off the full balance every month",
+                    "C) Applying for multiple credit cards",
+                    "D) Ignoring credit card statements"
+                ],
+                answer: "B) Paying off the full balance every month"
+            },
+            {
+                question: "A credit score is important because:",
+                options: [
+                    "A) It determines how much money is in your savings account",
+                    "B) It affects your ability to get loans and credit cards",
+                    "C) It only matters for people with high incomes",
+                    "D) It is the same as your bank account balance"
+                ],
+                answer: "B) It affects your ability to get loans and credit cards"
+            },
+            {
+                question: "Which of the following is an example of \"good debt\"?",
+                options: [
+                    "A) A high-interest payday loan",
+                    "B) A loan for higher education",
+                    "C) Credit card debt with high interest",
+                    "D) Borrowing money for unnecessary expenses"
+                ],
+                answer: "B) A loan for higher education"
+            },
+            {
+                question: "Which statement about minimum payments on credit cards is TRUE?",
+                options: [
+                    "A) Paying the minimum helps you avoid all interest charges",
+                    "B) Making only minimum payments can lead to long-term debt",
+                    "C) Minimum payments always reduce your credit score",
+                    "D) Minimum payments pay off the full balance every month"
+                ],
+                answer: "B) Making only minimum payments can lead to long-term debt"
+            },
+            {
+                question: "What is one simple strategy to avoid debt?",
+                options: [
+                    "A) Taking out multiple loans",
+                    "B) Spending more than you earn",
+                    "C) Only using credit for necessary expenses",
+                    "D) Ignoring loan payments"
+                ],
+                answer: "C) Only using credit for necessary expenses"
+            },
+            {
+                question: "Interest on debt refers to:",
+                options: [
+                    "A) The total amount you owe",
+                    "B) The extra money paid to borrow funds",
+                    "C) A fee for opening a savings account",
+                    "D) A type of credit score"
+                ],
+                answer: "B) The extra money paid to borrow funds"
+            },
+            {
+                question: "Why is it important to track expenses?",
+                options: [
+                    "A) To increase credit card limits",
+                    "B) To understand where money is going",
+                    "C) To avoid saving too much",
+                    "D) To qualify for more loans"
+                ],
+                answer: "B) To understand where money is going"
+            },
+            {
+                question: "Which type of savings account typically offers the highest interest rates?",
+                options: [
+                    "A) Checking accounts",
+                    "B) Basic savings accounts",
+                    "C) Online savings accounts",
+                    "D) Prepaid debit accounts"
+                ],
+                answer: "C) Online savings accounts"
+            },
+            {
+                question: "Mobile banking allows you to:",
+                options: [
+                    "A) Open a credit card without approval",
+                    "B) Access your bank account via a smartphone",
+                    "C) Avoid paying any bank fees",
+                    "D) Get cash instantly without an ATM"
+                ],
+                answer: "B) Access your bank account via a smartphone"
+            },
+            {
+                question: "Which is NOT a benefit of a checking account?",
+                options: [
+                    "A) Direct deposit for paychecks",
+                    "B) Earning high interest",
+                    "C) Easy access to funds",
+                    "D) Writing checks for payments"
+                ],
+                answer: "B) Earning high interest"
+            },
+            {
+                question: "A good financial habit for beginners is:",
+                options: [
+                    "A) Ignoring budgeting and tracking expenses",
+                    "B) Saving a portion of income regularly",
+                    "C) Relying on credit cards for everyday spending",
+                    "D) Spending money without a plan"
+                ],
+                answer: "B) Saving a portion of income regularly"
+            },
+            {
+                question: "Why is it important to have a financial plan?",
+                options: [
+                    "A) To ensure all money is spent",
+                    "B) To prepare for future expenses and emergencies",
+                    "C) To qualify for more loans",
+                    "D) To avoid opening a bank account"
+                ],
+                answer: "B) To prepare for future expenses and emergencies"
+            },
+            {
+                question: "How can someone improve their financial literacy?",
+                options: [
+                    "A) Avoid learning about personal finance",
+                    "B) Rely only on advice from friends",
+                    "C) Read about financial topics and track expenses",
+                    "D) Spend all their income without saving"
+                ],
+                answer: "C) Read about financial topics and track expenses"
+            }
+        ];
+
+        const questionContainer = document.getElementById('questions');
+
+        questions.forEach((q, index) => {
+            const div = document.createElement('div');
+            div.className = 'question';
+            div.innerHTML = `<p>${index + 1}. ${q.question}</p>` +
+                q.options.map(option => `<label><input type="radio" name="q${index}" value="${option}"> ${option}</label><br>`).join('');
+            questionContainer.appendChild(div);
+        });
+
+        document.getElementById('quizForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let score = 0;
+            
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected && selected.value === q.answer) {
+                    score++;
+                }
+            });
+            
+            let percentage = (score / questions.length) * 100;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `Your score: ${score}/${questions.length} (${percentage.toFixed(2)}%)<br>${score >= 18 ? 'Pass ✅' : 'Fail ❌'}`;
+            document.getElementById('buttons').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
