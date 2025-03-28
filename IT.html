@@ -1,120 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="100";>
-    <link rel="icon" type="image/jpg" href="Logo.png">
-    <title>Financial Literacy</title>
+    <title>MCQ Quiz</title>
     <style>
         body {
-            background: url("background\ img.png");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-            height: 100vh;
-            margin: 0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f9f9f9;
         }
-        .heading {
-            margin-top: 1px;
-            height: 23%;
-            display: flex;
-            border: 2px solid rgb(255, 255, 255);
-            padding: 1px;
-            border-radius: 5px;
-            background-color: black;
-            color: rgb(255, 255, 255);
-            font-size: 30px;
+        .container {
+            max-width: 800px;
+            margin: auto;
         }
-            .heading img {
-            margin-left: 1%;
-            margin-top: 26px;
-            height: 125px;
-            width: 125px;
-            border-radius: 100px;
-        }
-        .heading h1 {
+        .question {
+            margin-bottom: 15px;
             padding: 10px;
-            font-size: 4rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+        }
+        .result {
+            margin-top: 20px;
             font-weight: bold;
-            color: #ffffff;
-            margin-left: 2%;
-            padding: 0px 10px 0px 0px;  
-              }  
-              .main {
-                margin-left: 15%;
-              }
-              .footer {
-        background: #2c3e50;
-        color: white;
-        padding: 40px 20px;
-        text-align: center;
-          }
-
-        .footer-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
-        box-sizing: border-box;
-         }
-        .footer-section {
-        flex: 1;
-        min-width: 250px;
-        margin: 10px 0;
         }
-
-        .footer-bottom {
-        margin-top: 20px;
-        border-top: 1px solid #34495e;
-        padding-top: 10px;
-        text-align: center;
+        .buttons {
+            margin-top: 10px;
         }
-       
-        
+        .buttons button {
+            margin-right: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons .retest {
+            background-color: #ff9800;
+            color: white;
+        }
+        .buttons .next {
+            background-color: #4caf50;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <div class="heading">
-    <h1>Fin-N-See</h1>
-    <img src="Logo.png" alt="logo">
-</div>
+    <div class="container">
+        <h2>MCQ Quiz</h2>
+        <form id="quizForm">
+            <div id="questions"></div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result" class="result"></div>
+        <div class="buttons" id="buttons" style="display: none;">
+            <button class="retest" onclick="location.reload()">Re-test</button>
+            <button class="next" onclick="window.location.href='next.html'">Next</button>
+        </div>
+    </div>
 
-           <footer class="footer">
-            <div class="footer-container">
-              <div class="footer-section">
-                <h3>About Us</h3>
-                <p>We aim to make financial literacy simple and accessible for everyone. Learn to manage money wisely and make informed financial decisions.</p>
-              </div>
-          
-              <div class="footer-section">
-                <h3>Quick home</h3>
-                <ul>
-                  <li>Home</a></li>
-                  <li>Layer</a></li>
-                  <li>About</a></li>
-                  <li>Contact</a></li>
-                </ul>
-              </div>
-          
-              <div class="footer-section">
-                <h3>Team Members</h3>
-                <p>Frontend Developer: <a href="suhaspai13@gmail.com">suhaspai13@gmail.com</a></p>
-                <p>Backend Developer: <a href="shreyas.jkini@gmail.com">backend@example.com</a></p>
-                <p>UI/UX Designer: <a href="theadithyaswayam@gmail.com">designer@example.com</a></p>
-              </div>
-          
-              <div class="footer-section">
-                <h3>Follow Us</h3>
-                <a href="#">Instagram</a>
-              </div>
-            </div>
-          
-            <div class="footer-bottom">
-              <p>&copy; 2025 Your Financial Literacy. All rights reserved.</p>
-            </div>
-          </footer>       
+    <script>
+        const questions = [
+            {
+                question: "What is the main principle of zero-based budgeting?",
+                options: [
+                    "a. Spending all your income before saving",
+                    "b. Assigning every dollar to a specific category",
+                    "c. Saving a fixed percentage of income",
+                    "d. Ignoring variable expenses"
+                ],
+                answer: "b. Assigning every dollar to a specific category"
+            },
+            {
+                question: "The 50/30/20 rule suggests allocating:",
+                options: [
+                    "a. 50% to needs, 30% to wants, 20% to savings",
+                    "b. 30% to needs, 50% to wants, 20% to savings",
+                    "c. 20% to needs, 50% to savings, 30% to wants",
+                    "d. 50% to savings, 20% to needs, 30% to wants"
+                ],
+                answer: "a. 50% to needs, 30% to wants, 20% to savings"
+            },
+            {
+                question: "When budgeting with irregular income, what is the best approach?",
+                options: [
+                    "a. Spend first, save later",
+                    "b. Create a budget based on the lowest expected income",
+                    "c. Ignore savings during low-income months",
+                    "d. Use only credit cards for expenses"
+                ],
+                answer: "b. Create a budget based on the lowest expected income"
+            },
+            {
+                question: "What is a key benefit of a high-yield savings account?",
+                options: [
+                    "a. Unlimited withdrawals without penalties",
+                    "b. Higher interest rates compared to regular savings accounts",
+                    "c. Guaranteed high returns on investments",
+                    "d. Access to stock trading"
+                ],
+                answer: "b. Higher interest rates compared to regular savings accounts"
+            },
+            {
+                question: "How does automating savings help?",
+                options: [
+                    "a. Ensures consistent saving habits",
+                    "b. Eliminates the need to budget",
+                    "c. Allows unlimited withdrawals",
+                    "d. Reduces bank fees"
+                ],
+                answer: "a. Ensures consistent saving habits"
+            },
+            {
+                question: "A short-term financial goal typically includes:",
+                options: [
+                    "a. Retirement savings",
+                    "b. Buying a house in 20 years",
+                    "c. Saving for a vacation",
+                    "d. Long-term investments"
+                ],
+                answer: "c. Saving for a vacation"
+            },
+            {
+                question: "What is the best way to build credit from scratch?",
+                options: [
+                    "a. Taking out multiple loans at once",
+                    "b. Using a secured credit card responsibly",
+                    "c. Avoiding any type of credit usage",
+                    "d. Ignoring monthly payments"
+                ],
+                answer: "b. Using a secured credit card responsibly"
+            },
+            {
+                question: "How can you fix an error in your credit report?",
+                options: [
+                    "a. Ignore it since it will resolve itself",
+                    "b. File a dispute with the credit bureau",
+                    "c. Close all credit accounts",
+                    "d. Open new credit accounts"
+                ],
+                answer: "b. File a dispute with the credit bureau"
+            },
+            {
+                question: "Credit utilization refers to:",
+                options: [
+                    "a. The number of credit cards owned",
+                    "b. The percentage of available credit you are using",
+                    "c. Your total credit card debt",
+                    "d. The length of your credit history"
+                ],
+                answer: "b. The percentage of available credit you are using"
+            },
+            {
+                question: "Which type of credit card requires a security deposit?",
+                options: [
+                    "a. Unsecured credit card",
+                    "b. Rewards credit card",
+                    "c. Secured credit card",
+                    "d. Business credit card"
+                ],
+                answer: "c. Secured credit card"
+            },
+            {
+                question: "What is the key difference between the debt snowball and debt avalanche methods?",
+                options: [
+                    "a. Snowball focuses on paying smallest debts first, while avalanche prioritizes highest interest debts",
+                    "b. Avalanche requires borrowing more money, while snowball eliminates debt immediately",
+                    "c. Snowball method works only for credit card debt",
+                    "d. Avalanche method is faster but increases total debt"
+                ],
+                answer: "a. Snowball focuses on paying smallest debts first, while avalanche prioritizes highest interest debts"
+            },
+            {
+                question: "One potential downside of consolidating loans is:",
+                options: [
+                    "a. Lower interest rates",
+                    "b. Combining multiple payments into one",
+                    "c. Possible extension of the repayment period",
+                    "d. Immediate elimination of debt"
+                ],
+                answer: "c. Possible extension of the repayment period"
+            },
+            {
+                question: "Why might negotiating with creditors be beneficial?",
+                options: [
+                    "a. It helps lower interest rates or extend payment deadlines",
+                    "b. It eliminates debt completely",
+                    "c. It increases your credit score instantly",
+                    "d. It allows unlimited borrowing"
+                ],
+                answer: "a. It helps lower interest rates or extend payment deadlines"
+            },
+            {
+                question: "What is compound interest?",
+                options: [
+                    "a. Interest earned only on the original deposit",
+                    "b. Interest earned on both the initial deposit and previous interest",
+                    "c. A fixed amount of interest paid annually",
+                    "d. Interest that decreases over time"
+                ],
+                answer: "b. Interest earned on both the initial deposit and previous interest"
+            },
+            {
+                question: "Which of the following is an example of a retirement account?",
+                options: [
+                    "a. Checking account",
+                    "b. 401(k)",
+                    "c. Prepaid debit card",
+                    "d. Money market account"
+                ],
+                answer: "b. 401(k)"
+            },
+            {
+                question: "What is a key advantage of investing in index funds?",
+                options: [
+                    "a. Guaranteed short-term profits",
+                    "b. Diversification with lower risk",
+                    "c. Higher fees compared to active funds",
+                    "d. Only available to high-net-worth individuals"
+                ],
+                answer: "b. Diversification with lower risk"
+            },
+            {
+                question: "Bonds are generally considered:",
+                options: [
+                    "a. High-risk, high-reward investments",
+                    "b. Low-risk investments with steady returns",
+                    "c. Equivalent to savings accounts",
+                    "d. The same as stocks"
+                ],
+                answer: "b. Low-risk investments with steady returns"
+            },
+            {
+                question: "Which type of retirement account allows tax-free withdrawals in retirement?",
+                options: [
+                    "a. Traditional IRA",
+                    "b. Roth IRA",
+                    "c. 401(k)",
+                    "d. Certificate of Deposit (CD)"
+                ],
+                answer: "b. Roth IRA"
+            },
+            {
+                question: "The main purpose of investing is to:",
+                options: [
+                    "a. Keep money in a safe deposit box",
+                    "b. Earn returns and grow wealth over time",
+                    "c. Avoid budgeting",
+                    "d. Store cash for emergency use"
+                ],
+                answer: "b. Earn returns and grow wealth over time"
+            },
+            {
+                question: "Why are low-risk investments like bonds popular for retirement savings?",
+                options: [
+                    "a. They have higher interest than stocks",
+                    "b. They provide stable, predictable returns",
+                    "c. They guarantee high profits quickly",
+                    "d. They have no risk at all"
+                ],
+                answer: "b. They provide stable, predictable returns"
+            },
+            {
+                question: "Which of the following is NOT a feature of an IRA?",
+                options: [
+                    "a. Helps save for retirement",
+                    "b. Offers tax benefits",
+                    "c. Provides employer-matching contributions",
+                    "d. Can be either Roth or Traditional"
+                ],
+                answer: "c. Provides employer-matching contributions"
+            },
+            {
+                question: "What is a major risk of not investing for retirement?",
+                options: [
+                    "a. Higher interest on loans",
+                    "b. Running out of money later in life",
+                    "c. Low credit scores",
+                    "d. Having too many savings accounts"
+                ],
+                answer: "b. Running out of money later in life"
+            },
+            {
+                question: "What is the main benefit of diversifying investments?",
+                options: [
+                    "a. Reducing risk by spreading money across different assets",
+                    "b. Maximizing risk for higher rewards",
+                    "c. Focusing all money on one type of asset",
+                    "d. Avoiding the need for financial planning"
+                ],
+                answer: "a. Reducing risk by spreading money across different assets"
+            },
+            {
+                question: "Which of these is NOT considered a long-term investment?",
+                options: [
+                    "a. Stocks",
+                    "b. Bonds",
+                    "c. High-yield savings accounts",
+                    "d. Retirement funds"
+                ],
+                answer: "c. High-yield savings accounts"
+            },
+            {
+                question: "What should you consider before investing in any financial asset?",
+                options: [
+                    "a. Your risk tolerance and financial goals",
+                    "b. The number of credit cards you own",
+                    "c. How much cash is in your wallet",
+                    "d. The number of bank branches near you"
+                ],
+                answer: "a. Your risk tolerance and financial goals"
+            }
+        ];
+
+        const questionContainer = document.getElementById('questions');
+
+        questions.forEach((q, index) => {
+            const div = document.createElement('div');
+            div.className = 'question';
+            div.innerHTML = `<p>${index + 1}. ${q.question}</p>` +
+                q.options.map(option => `<label><input type="radio" name="q${index}" value="${option}"> ${option}</label><br>`).join('');
+            questionContainer.appendChild(div);
+        });
+
+        document.getElementById('quizForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let score = 0;
+            
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected && selected.value === q.answer) {
+                    score++;
+                }
+            });
+            
+            let percentage = (score / questions.length) * 100;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `Your score: ${score}/${questions.length} (${percentage.toFixed(2)}%)<br>${score >= 18 ? 'Pass ✅' : 'Fail ❌'}`;
+            document.getElementById('buttons').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
