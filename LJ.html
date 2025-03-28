@@ -20,6 +20,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
         body {
@@ -75,6 +76,7 @@
             nav {
                 display: flex;
                 gap: 1.5rem;
+                align-items: center;
             }
         }
 
@@ -88,6 +90,21 @@
             color: var(--color-text);
         }
 
+        .login-button {
+            padding: 0.5rem 1.5rem;
+            background: var(--color-primary);
+            color: black;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .login-button:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+        }
+
         /* Hero section */
         .hero {
             text-align: center;
@@ -98,12 +115,9 @@
             font-size: 2.25rem;
             font-weight: bold;
             margin-bottom: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero h2 {
-                font-size: 3rem;
-            }
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
         }
 
         .hero p {
@@ -111,6 +125,15 @@
             color: var(--color-text-muted);
             max-width: 42rem;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards 0.2s;
+        }
+
+        @media (min-width: 768px) {
+            .hero h2 {
+                font-size: 3rem;
+            }
         }
 
         /* Cards section */
@@ -138,6 +161,10 @@
             transition: transform 0.3s, box-shadow 0.3s;
             opacity: 0;
             transform: translateY(20px);
+        }
+
+        .card.visible {
+            animation: fadeInUp 0.6s ease forwards;
         }
 
         .card:hover {
@@ -205,13 +232,14 @@
             text-decoration: none;
             border-radius: 0.5rem;
             font-weight: 600;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
             margin-top: auto;
             width: fit-content;
         }
 
         .button:hover {
             background: var(--color-primary-hover);
+            transform: translateY(-2px);
         }
 
         /* Footer styles */
@@ -274,11 +302,12 @@
         .social-links a {
             padding: 0.5rem;
             border-radius: 9999px;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         .social-links a:hover {
             color: var(--color-primary);
+            transform: translateY(-2px);
         }
 
         .footer-bottom {
@@ -287,6 +316,239 @@
             border-top: 1px solid var(--color-border);
             text-align: center;
             color: var(--color-text-muted);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile menu */
+        .mobile-menu-button {
+            display: block;
+            padding: 0.5rem;
+            color: var(--color-text);
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-button {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 300px;
+            background: var(--color-background);
+            padding: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            display: block;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--color-text);
+            cursor: pointer;
+        }
+
+        .mobile-menu nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .mobile-menu a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 1.25rem;
+            padding: 0.5rem 0;
+        }
+
+        /* Login page styles */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+
+        .login-card {
+            max-width: 28rem;
+            width: 100%;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+
+        .login-header {
+            text-align: center;
+            padding: 2rem 2rem 1rem;
+        }
+
+        .login-icon {
+            width: 3rem;
+            height: 3rem;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+
+        .login-header h2 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .login-form {
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #9ca3af;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            outline: none;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 0.25rem;
+            border: 1px solid #e5e7eb;
+            accent-color: #3b82f6;
+        }
+
+        .forgot-password {
+            color: #3b82f6;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .forgot-password:hover {
+            color: #2563eb;
+        }
+
+        .login-button {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .login-button:hover {
+            background-color: #2563eb;
+        }
+
+        .login-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #3b82f6;
+        }
+
+        .signup-link {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .signup-link a {
+            color: #3b82f6;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .signup-link a:hover {
+            color: #2563eb;
+        }
+
+        @media (max-width: 640px) {
+            .login-card {
+                margin: 1rem;
+            }
+            
+            .login-form {
+                padding: 1rem;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -306,9 +568,33 @@
                     <a href="#">Home</a>
                     <a href="#">About</a>
                     <a href="#">Contact</a>
+                    <a href="login.html" class="login-button">Login</a>
                 </nav>
+                <div class="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </div>
             </div>
         </header>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <div class="mobile-menu-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="login.html" class="login-button">Login</a>
+            </nav>
+        </div>
 
         <!-- Hero Section -->
         <div class="hero">
@@ -436,4 +722,81 @@
                             </a>
                             <a href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4
+                                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Fin-N-See. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Card animations on scroll
+        const cards = document.querySelectorAll('.card');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Login form functionality
+        document.getElementById('loginForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            // Handle login logic here
+            console.log('Login attempt:', {
+                email,
+                password,
+                remember
+            });
+        });
+    </script>
+</body>
+</html>
