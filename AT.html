@@ -1,120 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="100";>
-    <link rel="icon" type="image/jpg" href="Logo.png">
-    <title>Financial Literacy</title>
+    <title>MCQ Quiz</title>
     <style>
         body {
-            background: url("background\ img.png");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-            height: 100vh;
-            margin: 0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f9f9f9;
         }
-        .heading {
-            margin-top: 1px;
-            height: 23%;
-            display: flex;
-            border: 2px solid rgb(255, 255, 255);
-            padding: 1px;
-            border-radius: 5px;
-            background-color: black;
-            color: rgb(255, 255, 255);
-            font-size: 30px;
+        .container {
+            max-width: 800px;
+            margin: auto;
         }
-            .heading img {
-            margin-left: 1%;
-            margin-top: 26px;
-            height: 125px;
-            width: 125px;
-            border-radius: 100px;
-        }
-        .heading h1 {
+        .question {
+            margin-bottom: 15px;
             padding: 10px;
-            font-size: 4rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+        }
+        .result {
+            margin-top: 20px;
             font-weight: bold;
-            color: #ffffff;
-            margin-left: 2%;
-            padding: 0px 10px 0px 0px;  
-              }  
-              .main {
-                margin-left: 15%;
-              }
-              .footer {
-        background: #2c3e50;
-        color: white;
-        padding: 40px 20px;
-        text-align: center;
-          }
-
-        .footer-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
-        box-sizing: border-box;
-         }
-        .footer-section {
-        flex: 1;
-        min-width: 250px;
-        margin: 10px 0;
         }
-
-        .footer-bottom {
-        margin-top: 20px;
-        border-top: 1px solid #34495e;
-        padding-top: 10px;
-        text-align: center;
+        .buttons {
+            margin-top: 10px;
         }
-       
-        
+        .buttons button {
+            margin-right: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons .retest {
+            background-color: #ff9800;
+            color: white;
+        }
+        .buttons .next {
+            background-color: #4caf50;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <div class="heading">
-    <h1>Fin-N-See</h1>
-    <img src="Logo.png" alt="logo">
-</div>
+    <div class="container">
+        <h2>MCQ Quiz</h2>
+        <form id="quizForm">
+            <div id="questions"></div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result" class="result"></div>
+        <div class="buttons" id="buttons" style="display: none;">
+            <button class="retest" onclick="location.reload()">Re-test</button>
+            <button class="next" onclick="window.location.href='next.html'">Next</button>
+        </div>
+    </div>
 
-           <footer class="footer">
-            <div class="footer-container">
-              <div class="footer-section">
-                <h3>About Us</h3>
-                <p>We aim to make financial literacy simple and accessible for everyone. Learn to manage money wisely and make informed financial decisions.</p>
-              </div>
-          
-              <div class="footer-section">
-                <h3>Quick home</h3>
-                <ul>
-                  <li>Home</a></li>
-                  <li>Layer</a></li>
-                  <li>About</a></li>
-                  <li>Contact</a></li>
-                </ul>
-              </div>
-          
-              <div class="footer-section">
-                <h3>Team Members</h3>
-                <p>Frontend Developer: <a href="suhaspai13@gmail.com">suhaspai13@gmail.com</a></p>
-                <p>Backend Developer: <a href="shreyas.jkini@gmail.com">backend@example.com</a></p>
-                <p>UI/UX Designer: <a href="theadithyaswayam@gmail.com">designer@example.com</a></p>
-              </div>
-          
-              <div class="footer-section">
-                <h3>Follow Us</h3>
-                <a href="#">Instagram</a>
-              </div>
-            </div>
-          
-            <div class="footer-bottom">
-              <p>&copy; 2025 Your Financial Literacy. All rights reserved.</p>
-            </div>
-          </footer>       
+    <script>
+        const questions = [
+            {
+                question: "What is the main purpose of diversification in investing?",
+                options: [
+                    "A) To maximize short-term gains",
+                    "B) To spread risk across different assets",
+                    "C) To ensure all investments are in one sector",
+                    "D) To avoid long-term investments"
+                ],
+                answer: "B) To spread risk across different assets"
+            },
+            {
+                question: "Real estate investing is often considered a good strategy because:",
+                options: [
+                    "A) Property values always increase",
+                    "B) It requires no initial capital",
+                    "C) It generates passive income and long-term appreciation",
+                    "D) It eliminates financial risk"
+                ],
+                answer: "C) It generates passive income and long-term appreciation"
+            },
+            {
+                question: "Which tax-advantaged account allows tax-free withdrawals in retirement?",
+                options: [
+                    "A) Traditional IRA",
+                    "B) Roth IRA",
+                    "C) 401(k)",
+                    "D) Health Savings Account (HSA)"
+                ],
+                answer: "B) Roth IRA"
+            },
+            {
+                question: "The main advantage of a Health Savings Account (HSA) is:",
+                options: [
+                    "A) It provides unlimited investment options",
+                    "B) It allows tax-free withdrawals for medical expenses",
+                    "C) It requires no contributions",
+                    "D) It replaces health insurance"
+                ],
+                answer: "B) It allows tax-free withdrawals for medical expenses"
+            },
+            {
+                question: "What is the Rule of 72 used for?",
+                options: [
+                    "A) Estimating how long it takes to double an investment",
+                    "B) Calculating tax deductions",
+                    "C) Determining pension benefits",
+                    "D) Predicting inflation rates"
+                ],
+                answer: "A) Estimating how long it takes to double an investment"
+            },
+            {
+                question: "Why is maximizing employer 401(k) matching contributions beneficial?",
+                options: [
+                    "A) It reduces taxable income",
+                    "B) It increases an employee's salary",
+                    "C) It provides a guaranteed return on contributions",
+                    "D) It eliminates investment risk"
+                ],
+                answer: "C) It provides a guaranteed return on contributions"
+            },
+            {
+                question: "An annuity is best described as:",
+                options: [
+                    "A) A high-risk stock investment",
+                    "B) A fixed or variable income stream during retirement",
+                    "C) A savings account with no withdrawal restrictions",
+                    "D) A short-term investment option"
+                ],
+                answer: "B) A fixed or variable income stream during retirement"
+            },
+            {
+                question: "What is a pension plan?",
+                options: [
+                    "A) A government savings account",
+                    "B) A retirement plan providing fixed payments to retirees",
+                    "C) A high-risk investment strategy",
+                    "D) A type of tax deduction"
+                ],
+                answer: "B) A retirement plan providing fixed payments to retirees"
+            },
+            {
+                question: "What is the main difference between a tax deduction and a tax credit?",
+                options: [
+                    "A) A deduction reduces taxable income, while a credit directly reduces taxes owed",
+                    "B) A credit is only available to business owners",
+                    "C) A deduction increases tax liability",
+                    "D) They both provide the same tax benefits"
+                ],
+                answer: "A) A deduction reduces taxable income, while a credit directly reduces taxes owed"
+            },
+            {
+                question: "A key strategy to reduce taxable income is:",
+                options: [
+                    "A) Increasing investment in taxable bonds",
+                    "B) Contributing to tax-advantaged retirement accounts",
+                    "C) Withdrawing all savings annually",
+                    "D) Avoiding employment"
+                ],
+                answer: "B) Contributing to tax-advantaged retirement accounts"
+            },
+            {
+                question: "Capital gains tax is applied when:",
+                options: [
+                    "A) You earn interest on a savings account",
+                    "B) You sell an asset for a profit",
+                    "C) You receive a salary raise",
+                    "D) You inherit money from an estate"
+                ],
+                answer: "B) You sell an asset for a profit"
+            },
+            {
+                question: "What is the purpose of a will?",
+                options: [
+                    "A) To reduce capital gains tax",
+                    "B) To distribute assets according to a person's wishes after death",
+                    "C) To eliminate estate taxes",
+                    "D) To manage day-to-day financial decisions"
+                ],
+                answer: "B) To distribute assets according to a person's wishes after death"
+            },
+            {
+                question: "A trust differs from a will because:",
+                options: [
+                    "A) It is only for high-income individuals",
+                    "B) It allows assets to be transferred without going through probate",
+                    "C) It automatically eliminates all debts",
+                    "D) It increases taxable income"
+                ],
+                answer: "B) It allows assets to be transferred without going through probate"
+            },
+            {
+                question: "What is the main reason for purchasing life insurance in estate planning?",
+                options: [
+                    "A) To provide financial security for beneficiaries",
+                    "B) To increase investment returns",
+                    "C) To reduce tax liability",
+                    "D) To replace other investments"
+                ],
+                answer: "A) To provide financial security for beneficiaries"
+            },
+            {
+                question: "Who is a beneficiary in estate planning?",
+                options: [
+                    "A) A person who manages the estate",
+                    "B) A person designated to receive assets after someone's death",
+                    "C) A financial advisor",
+                    "D) A tax consultant"
+                ],
+                answer: "B) A person designated to receive assets after someone's death"
+            },
+            {
+                question: "Refinancing a mortgage can be beneficial because:",
+                options: [
+                    "A) It increases monthly payments",
+                    "B) It can lower interest rates and reduce monthly payments",
+                    "C) It eliminates the need for credit checks",
+                    "D) It extends the loan indefinitely"
+                ],
+                answer: "B) It can lower interest rates and reduce monthly payments"
+            },
+            {
+                question: "What does leveraging debt for investments mean?",
+                options: [
+                    "A) Borrowing money to invest with the expectation of earning a higher return",
+                    "B) Avoiding all debt-related investments",
+                    "C) Using savings instead of loans",
+                    "D) Paying off all loans immediately"
+                ],
+                answer: "A) Borrowing money to invest with the expectation of earning a higher return"
+            },
+            {
+                question: "Bankruptcy should be considered:",
+                options: [
+                    "A) As a first option when in debt",
+                    "B) As a last resort when no other financial solutions exist",
+                    "C) As a way to eliminate all financial obligations instantly",
+                    "D) To increase personal wealth"
+                ],
+                answer: "B) As a last resort when no other financial solutions exist"
+            },
+            {
+                question: "The FIRE movement stands for:",
+                options: [
+                    "A) Financial Investments, Retirement, and Equity",
+                    "B) Financial Independence, Retire Early",
+                    "C) Federal Income Regulations and Earnings",
+                    "D) Fixed Interest Rate Estimation"
+                ],
+                answer: "B) Financial Independence, Retire Early"
+            },
+            {
+                question: "What is a common way to generate passive income?",
+                options: [
+                    "A) Full-time employment",
+                    "B) Rental properties and dividend-paying stocks",
+                    "C) Taking out multiple loans",
+                    "D) Selling personal assets"
+                ],
+                answer: "B) Rental properties and dividend-paying stocks"
+            },
+            {
+                question: "Why is having multiple income sources beneficial?",
+                options: [
+                    "A) It diversifies financial risk and increases financial stability",
+                    "B) It complicates tax filings unnecessarily",
+                    "C) It prevents job opportunities",
+                    "D) It eliminates the need for budgeting"
+                ],
+                answer: "A) It diversifies financial risk and increases financial stability"
+            },
+            {
+                question: "What is the primary goal of financial independence?",
+                options: [
+                    "A) To retire as early as possible without a financial plan",
+                    "B) To build enough wealth to cover expenses without relying on employment",
+                    "C) To maximize credit card usage",
+                    "D) To avoid saving money"
+                ],
+                answer: "B) To build enough wealth to cover expenses without relying on employment"
+            },
+            {
+                question: "Which of the following is NOT considered a passive income source?",
+                options: [
+                    "A) Stock dividends",
+                    "B) Rental income",
+                    "C) Full-time employment",
+                    "D) Peer-to-peer lending"
+                ],
+                answer: "C) Full-time employment"
+            },
+            {
+                question: "How does compound interest contribute to wealth-building?",
+                options: [
+                    "A) By earning interest on both the initial investment and accumulated interest",
+                    "B) By reducing taxable income",
+                    "C) By preventing investment losses",
+                    "D) By guaranteeing short-term gains"
+                ],
+                answer: "A) By earning interest on both the initial investment and accumulated interest"
+            },
+            {
+                question: "What is one key characteristic of someone who has achieved financial independence?",
+                options: [
+                    "A) They rely on their savings and investments to cover living expenses",
+                    "B) They avoid all investments",
+                    "C) They depend entirely on credit cards for income",
+                    "D) They never track their expenses"
+                ],
+                answer: "A) They rely on their savings and investments to cover living expenses"
+            }
+        ];
+
+        const questionContainer = document.getElementById('questions');
+
+        questions.forEach((q, index) => {
+            const div = document.createElement('div');
+            div.className = 'question';
+            div.innerHTML = `<p>${index + 1}. ${q.question}</p>` +
+                q.options.map(option => `<label><input type="radio" name="q${index}" value="${option}"> ${option}</label><br>`).join('');
+            questionContainer.appendChild(div);
+        });
+
+        document.getElementById('quizForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let score = 0;
+            
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected && selected.value === q.answer) {
+                    score++;
+                }
+            });
+            
+            let percentage = (score / questions.length) * 100;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `Your score: ${score}/${questions.length} (${percentage.toFixed(2)}%)<br>${score >= 18 ? 'Pass ✅' : 'Fail ❌'}`;
+            document.getElementById('buttons').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
