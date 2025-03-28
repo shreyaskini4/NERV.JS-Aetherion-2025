@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
+    <title>Fin-N-See - AI Financial Assistant</title>
     <style>
         * {
             margin: 0;
@@ -12,707 +12,151 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            color: white;
-            overflow: hidden;
-        }
-
-        .content {
-            position: relative;
-            text-align: center;
-            padding: 20px;
-            margin-top: 10vh;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        p {
-            font-size: 1.5em;
-            max-width: 600px;
-            margin: 0 auto;
+            font-family: 'Inter', sans-serif;
+            background-color: #1E1E2C;
+            color: #FFFFFF;
             line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Floating particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: moveParticle 20s infinite linear;
-        }
-
-        /* Small window container */
-        .iframe-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 450px;
-            height: 450px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            display: block;
-            resize: both;
-            overflow: hidden;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        .iframe-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Draggable header */
-        .iframe-header {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 12px;
-            display: flex;
-            justify-content: space-between;
-            cursor: grab;
-            font-size: 16px;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-
-        .iframe-header span {
-            cursor: pointer;
-            margin-left: 10px;
-            transition: all 0.2s ease;
-        }
-
-        .iframe-header span:hover {
-            transform: scale(1.2);
-        }
-
-        iframe {
-            width: 100%;
-            height: calc(100% - 44px);
-            border: none;
-            background: white;
-        }
-
-        /* Minimized state */
-        .minimized {
-            height: 44px !important;
-            transition: height 0.3s ease;
-        }
-
-        /* Animations */
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes moveParticle {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(100vw); opacity: 0; }
-        }
-
-        /* Tailwind CSS styles */
-        *, ::before, ::after {
-          --tw-border-spacing-x: 0;
-          --tw-border-spacing-y: 0;
-          --tw-translate-x: 0;
-          --tw-translate-y: 0;
-          --tw-rotate: 0;
-          --tw-skew-x: 0;
-          --tw-skew-y: 0;
-          --tw-scale-x: 1;
-          --tw-scale-y: 1;
-          --tw-pan-x:  ;
-          --tw-pan-y:  ;
-          --tw-pinch-zoom:  ;
-          --tw-scroll-snap-strictness: proximity;
-          --tw-gradient-from-position:  ;
-          --tw-gradient-via-position:  ;
-          --tw-gradient-to-position:  ;
-          --tw-ordinal:  ;
-          --tw-slashed-zero:  ;
-          --tw-numeric-figure:  ;
-          --tw-numeric-spacing:  ;
-          --tw-numeric-fraction:  ;
-          --tw-ring-inset:  ;
-          --tw-ring-offset-width: 0px;
-          --tw-ring-offset-color: #fff;
-          --tw-ring-color: rgb(59 130 246 / 0.5);
-          --tw-ring-offset-shadow: 0 0 #0000;
-          --tw-ring-shadow: 0 0 #0000;
-          --tw-shadow: 0 0 #0000;
-          --tw-shadow-colored: 0 0 #0000;
-          --tw-blur:  ;
-          --tw-brightness:  ;
-          --tw-contrast:  ;
-          --tw-grayscale:  ;
-          --tw-hue-rotate:  ;
-          --tw-invert:  ;
-          --tw-saturate:  ;
-          --tw-sepia:  ;
-          --tw-drop-shadow:  ;
-          --tw-backdrop-blur:  ;
-          --tw-backdrop-brightness:  ;
-          --tw-backdrop-contrast:  ;
-          --tw-backdrop-grayscale:  ;
-          --tw-backdrop-hue-rotate:  ;
-          --tw-backdrop-invert:  ;
-          --tw-backdrop-opacity:  ;
-          --tw-backdrop-saturate:  ;
-          --tw-backdrop-sepia:  ;
-          --tw-contain-size:  ;
-          --tw-contain-layout:  ;
-          --tw-contain-paint:  ;
-          --tw-contain-style:  ;
-        }
-
-        ::backdrop {
-          --tw-border-spacing-x: 0;
-          --tw-border-spacing-y: 0;
-          --tw-translate-x: 0;
-          --tw-translate-y: 0;
-          --tw-rotate: 0;
-          --tw-skew-x: 0;
-          --tw-skew-y: 0;
-          --tw-scale-x: 1;
-          --tw-scale-y: 1;
-          --tw-pan-x:  ;
-          --tw-pan-y:  ;
-          --tw-pinch-zoom:  ;
-          --tw-scroll-snap-strictness: proximity;
-          --tw-gradient-from-position:  ;
-          --tw-gradient-via-position:  ;
-          --tw-gradient-to-position:  ;
-          --tw-ordinal:  ;
-          --tw-slashed-zero:  ;
-          --tw-numeric-figure:  ;
-          --tw-numeric-spacing:  ;
-          --tw-numeric-fraction:  ;
-          --tw-ring-inset:  ;
-          --tw-ring-offset-width: 0px;
-          --tw-ring-offset-color: #fff;
-          --tw-ring-color: rgb(59 130 246 / 0.5);
-          --tw-ring-offset-shadow: 0 0 #0000;
-          --tw-ring-shadow: 0 0 #0000;
-          --tw-shadow: 0 0 #0000;
-          --tw-shadow-colored: 0 0 #0000;
-          --tw-blur:  ;
-          --tw-brightness:  ;
-          --tw-contrast:  ;
-          --tw-grayscale:  ;
-          --tw-hue-rotate:  ;
-          --tw-invert:  ;
-          --tw-saturate:  ;
-          --tw-sepia:  ;
-          --tw-drop-shadow:  ;
-          --tw-backdrop-blur:  ;
-          --tw-backdrop-brightness:  ;
-          --tw-backdrop-contrast:  ;
-          --tw-backdrop-grayscale:  ;
-          --tw-backdrop-hue-rotate:  ;
-          --tw-backdrop-invert:  ;
-          --tw-backdrop-opacity:  ;
-          --tw-backdrop-saturate:  ;
-          --tw-backdrop-sepia:  ;
-          --tw-contain-size:  ;
-          --tw-contain-layout:  ;
-          --tw-contain-paint:  ;
-          --tw-contain-style:  ;
-        }
-
-        *,
-        ::before,
-        ::after {
-          box-sizing: border-box;
-          border-width: 0;
-          border-style: solid;
-          border-color: #e5e7eb;
-        }
-
-        ::before,
-        ::after {
-          --tw-content: '';
-        }
-
-        html,
-        :host {
-          line-height: 1.5;
-          -webkit-text-size-adjust: 100%;
-          -moz-tab-size: 4;
-          -o-tab-size: 4;
-             tab-size: 4;
-          font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-          font-feature-settings: normal;
-          font-variation-settings: normal;
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-          margin: 0;
-          line-height: inherit;
-        }
-
-        hr {
-          height: 0;
-          color: inherit;
-          border-top-width: 1px;
-        }
-
-        abbr:where([title]) {
-          -webkit-text-decoration: underline dotted;
-                  text-decoration: underline dotted;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          font-size: inherit;
-          font-weight: inherit;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: inherit;
-        }
-
-        b,
-        strong {
-          font-weight: bolder;
-        }
-
-        code,
-        kbd,
-        samp,
-        pre {
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-          font-feature-settings: normal;
-          font-variation-settings: normal;
-          font-size: 1em;
-        }
-
-        small {
-          font-size: 80%;
-        }
-
-        sub,
-        sup {
-          font-size: 75%;
-          line-height: 0;
-          position: relative;
-          vertical-align: baseline;
-        }
-
-        sub {
-          bottom: -0.25em;
-        }
-
-        sup {
-          top: -0.5em;
-        }
-
-        table {
-          text-indent: 0;
-          border-color: inherit;
-          border-collapse: collapse;
-        }
-
-        button,
-        input,
-        optgroup,
-        select,
-        textarea {
-          font-family: inherit;
-          font-feature-settings: inherit;
-          font-variation-settings: inherit;
-          font-size: 100%;
-          font-weight: inherit;
-          line-height: inherit;
-          letter-spacing: inherit;
-          color: inherit;
-          margin: 0;
-          padding: 0;
-        }
-
-        button,
-        select {
-          text-transform: none;
-        }
-
-        button,
-        input:where([type='button']),
-        input:where([type='reset']),
-        input:where([type='submit']) {
-          -webkit-appearance: button;
-          background-color: transparent;
-          background-image: none;
-        }
-
-        :-moz-focusring {
-          outline: auto;
-        }
-
-        :-moz-ui-invalid {
-          box-shadow: none;
-        }
-
-        progress {
-          vertical-align: baseline;
-        }
-
-        ::-webkit-inner-spin-button,
-        ::-webkit-outer-spin-button {
-          height: auto;
-        }
-
-        [type='search'] {
-          -webkit-appearance: textfield;
-          outline-offset: -2px;
-        }
-
-        ::-webkit-search-decoration {
-          -webkit-appearance: none;
-        }
-
-        ::-webkit-file-upload-button {
-          -webkit-appearance: button;
-          font: inherit;
-        }
-
-        summary {
-          display: list-item;
-        }
-
-        blockquote,
-        dl,
-        dd,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        hr,
-        figure,
-        p,
-        pre {
-          margin: 0;
-        }
-
-        fieldset {
-          margin: 0;
-          padding: 0;
-        }
-
-        legend {
-          padding: 0;
-        }
-
-        ol,
-        ul,
-        menu {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-
-        dialog {
-          padding: 0;
-        }
-
-        textarea {
-          resize: vertical;
-        }
-
-        input::-moz-placeholder, textarea::-moz-placeholder {
-          opacity: 1;
-          color: #9ca3af;
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-          opacity: 1;
-          color: #9ca3af;
-        }
-
-        button,
-        [role="button"] {
-          cursor: pointer;
-        }
-
-        :disabled {
-          cursor: default;
-        }
-
-        img,
-        svg,
-        video,
-        canvas,
-        audio,
-        iframe,
-        embed,
-        object {
-          display: block;
-          vertical-align: middle;
-        }
-
-        img,
-        video {
-          max-width: 100%;
-          height: auto;
-        }
-
-        [hidden] {
-          display: none;
+            overflow-x: hidden;
         }
 
         .container {
-          width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
         }
 
-        @media (min-width: 640px) {
-          .container {
-            max-width: 640px;
-          }
+        .content {
+            flex: 1;
+            padding-right: 50px;
         }
 
-        @media (min-width: 768px) {
-          .container {
-            max-width: 768px;
-          }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #6A11CB 0%, #2575FC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        @media (min-width: 1024px) {
-          .container {
-            max-width: 1024px;
-          }
+        .subtitle {
+            font-size: 1.25rem;
+            color: #A0AEC0;
+            margin-bottom: 30px;
+            max-width: 600px;
         }
 
-        @media (min-width: 1280px) {
-          .container {
-            max-width: 1280px;
-          }
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        @media (min-width: 1536px) {
-          .container {
-            max-width: 1536px;
-          }
+        .feature {
+            background-color: #2D2D3A;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
         }
 
-        .fixed {
-          position: fixed;
+        .feature:hover {
+            transform: translateX(10px);
         }
 
-        .absolute {
-          position: absolute;
+        .feature-icon {
+            font-size: 2rem;
+            margin-right: 20px;
+            background: linear-gradient(90deg, #6A11CB 0%, #2575FC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .relative {
-          position: relative;
+        .feature-content {
+            flex-grow: 1;
         }
 
-        .block {
-          display: block;
+        .feature-content h3 {
+            margin-bottom: 5px;
         }
 
-        .flex {
-          display: flex;
+        .iframe-container {
+            width: 450px;
+            height: 600px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-radius: 15px;
+            overflow: hidden;
         }
 
-        .hidden {
-          display: none;
-        }
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 50px;
+            }
 
-        .min-h-screen {
-          min-height: 100vh;
-        }
+            .content {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
 
-        .flex-grow {
-          flex-grow: 1;
-        }
+            .features {
+                align-items: center;
+            }
 
-        .transform {
-          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-        }
+            .feature {
+                max-width: 400px;
+                text-align: center;
+                flex-direction: column;
+            }
 
-        .resize {
-          resize: both;
-        }
-
-        .items-center {
-          align-items: center;
-        }
-
-        .justify-center {
-          justify-content: center;
-        }
-
-        .border {
-          border-width: 1px;
-        }
-
-        .bg-gray-100 {
-          --tw-bg-opacity: 1;
-          background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-        }
-
-        .blur {
-          --tw-blur: blur(8px);
-          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-        }
-
-        .backdrop-filter {
-          -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-        }
-
-        .transition {
-          transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-          transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-          transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          transition-duration: 150ms;
-        }
-
-        .ease-in-out {
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .ease-out {
-          transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-    
-    <div class="content">
-        <h1>Welcome to My Website</h1>
-        <p>Explore amazing content while having a functional window in the corner!</p>
-    </div>
-
-    <!-- Small Window -->
-    <div class="iframe-container" id="smallWindow">
-        <div class="iframe-header" id="dragHeader">
-            <span style="flex-grow: 1;">📌 Quick Access</span>
-            <span onclick="minimizeWindow()">➖</span>
-            <span onclick="closeWindow()">❌</span>
+    <div class="container">
+        <div class="content">
+            <h1>Fin-N-See AI</h1>
+            <p class="subtitle">Your intelligent financial companion powered by advanced AI technology. Get instant insights, analyze markets, and solve complex financial queries with ease.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">💡</div>
+                    <div class="feature-content">
+                        <h3>Smart Insights</h3>
+                        <p>Receive intelligent financial recommendations</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-content">
+                        <h3>Market Analysis</h3>
+                        <p>Real-time market trends and predictions</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-content">
+                        <h3>Secure & Private</h3>
+                        <p>Your financial data remains confidential</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <iframe src="https://finchat.io/ai/chat/"></iframe>
+
+        <div class="iframe-container">
+            <iframe src="https://finchat.io/ai/chat/" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
     </div>
-
-    <script>
-        // Draggable window functionality
-        let dragItem = document.getElementById("smallWindow");
-        let header = document.getElementById("dragHeader");
-        let active = false, currentX, currentY, initialX, initialY, xOffset = 0, yOffset = 0;
-
-        header.addEventListener("mousedown", dragStart);
-        window.addEventListener("mouseup", dragEnd);
-        window.addEventListener("mousemove", drag);
-
-        function dragStart(e) {
-            if (e.target === header || e.target.parentElement === header) {
-                active = true;
-                initialX = e.clientX - xOffset;
-                initialY = e.clientY - yOffset;
-                dragItem.style.cursor = 'grabbing';
-            }
-        }
-
-        function drag(e) {
-            if (active) {
-                e.preventDefault();
-                currentX = e.clientX - initialX;
-                currentY = e.clientY - initialY;
-                xOffset = currentX;
-                yOffset = currentY;
-                dragItem.style.transform = `translate(${currentX}px, ${currentY}px)`;
-            }
-        }
-
-        function dragEnd() {
-            active = false;
-            dragItem.style.cursor = 'grab';
-        }
-
-        function minimizeWindow() {
-            let win = document.getElementById("smallWindow");
-            win.classList.toggle("minimized");
-        }
-
-        function closeWindow() {
-            let win = document.getElementById("smallWindow");
-            win.style.animation = 'slideIn 0.5s ease-out reverse';
-            setTimeout(() => {
-                win.style.display = 'none';
-            }, 500);
-        }
-
-        // Create floating particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.opacity = Math.random();
-                particle.style.width = Math.random() * 5 + 5 + 'px';
-                particle.style.height = particle.style.width;
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Initialize particles
-        createParticles();
-    </script>
 </body>
 </html>
